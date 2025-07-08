@@ -1,0 +1,5 @@
+Description from the project related to the order
+на ресурсе satellites.pro задействована открытая библиотека для работы с картами leaflet.js, 
+нужно убрать из кода leaflet.js все функции которые сайтом не используются
+
+задокументировать методику
