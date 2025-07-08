@@ -184,16 +184,16 @@
           server: { api: "api.google-maps.pro" },
           map: { api: "api", res: "api", a: "api", ac: "api", menu: "api" },
           ep: {
-            mkjs: "https:\/\/cdn.apple-mapkit.com\/mk\/5.72.53\/mapkit.js",
-            "mk-csr":
-              "https:\/\/cdn.apple-mapkit.com\/ti\/csr\/1.x.x\/mk-csr.js?mapkitVersion=5.72.53",
-            w: ["a", "\/a\/w.php"],
-            borders: ["ac", "\/ac\/borders.php"],
-            routing: ["a", "\/a\/rt.php"],
-            s: ["api", "\/a\/s.php"],
-            rg: ["a", "\/a\/rg2.php"],
-            tools: ["res", "\/res\/tools.min.js"],
-          },
+            // mkjs: "https://cdn.apple-mapkit.com/mk/5.72.53/mapkit.js",
+            // "mk-csr": "https://cdn.apple-mapkit.com/ti/csr/1.x.x/mk-csr.js?mapkitVersion=5.72.53",
+            mkjs: "http://localhost:3000/parse/mapkit",
+            "mk-csr": "http://localhost:3000/parse/csr",
+            w: ["a", "/a/w.php"],
+            borders: ["ac", "/ac/borders.php"], 
+            routing: ["a", "/a/rt.php"],
+            s: ["api", "/a/s.php"],
+            rg: ["a", "/a/rg2.php"],
+            tools: ["res", "/res/tools.min.js"],          },
         },
       };
       GMP.lang = {
@@ -244,12 +244,12 @@
       defer=""
     ></script>
     <script>
+      const GMP_API_H = window.GMP_API_H= 'api.google-maps.pro'
       window.onerror = function () {
         var x = new XMLHttpRequest();
         x.open(
           "GET",
-          (window.GMP_API_H ? "//" + GMP_API_H : "") +
-            "/a/err.php?p=" +
+          (window.GMP_API_H ? "//" + GMP_API_H : "") + "/a/err.php?p=" +
             encodeURIComponent(
               JSON.stringify([
                 arguments,
@@ -366,7 +366,7 @@
       async=""
       src="https://fundingchoicesmessages.google.com/f/AGSKWxVqmPUI7a5-JZQtfWGSWh5RgxFX0SkTm_Ikd7ONKHy_mKWQOmjUaTlr3ruMExJ5T2v_w3cbcrjjmTVjOJXIT_xkbt6Cr07m7Eb-vfspTxRBcMAHMvM_73FO0TlWX7yA9Sd-JkP5qg==?fccs=W1siQUtzUm9sOXl3LVFMVVg5bktOTDg5UjM1Y2xYMlU1Y3l2ZVpUYjNnWW1JVXJGNG1BOHh2dWJsOGsyRTNlYU1CMUdWU2ZDNGE3QkZCOVhzcnBEdG93UVNtUTNwYWZaZHNZdHF2czhWWVZjUlpMTmZERVB0WWx1bUhZLVpndXVMb1BQZEZ4STR4WDhMRFBEZ1VXNkVobTltVTNTOEswWHYtOWRnPT0iXSxudWxsLG51bGwsbnVsbCxudWxsLG51bGwsWzE3NTE5MjE3MDEsNzcwMDAwMDAwXSxudWxsLG51bGwsbnVsbCxbbnVsbCxbN11dLCJodHRwczovL3NhdGVsbGl0ZXMucHJvLyIsbnVsbCxbWzI2LCI2Il0sWzgsIlBwRDJZRDFMZHJVIl0sWzksInJ1Il0sWzIzLCIxNzUxNTM5OTE4Il0sWzE5LCIyIl0sWzI0LCIiXSxbMjUsIltbOTUzNTkyNjFdXSJdLFsyOSwiZmFsc2UiXV1d"
     ></script>
-    <link
+    <!-- <link
       rel="preload"
       href="https://cdn.apple-mapkit.com/ti/csr/1.x.x/mk-csr.js?mapkitVersion=5.72.53"
       as="script"
@@ -374,6 +374,16 @@
     <script
       type="text/javascript"
       src="https://cdn.apple-mapkit.com/mk/5.72.53/mapkit.js"
+      async=""
+    ></script> -->
+    <link
+      rel="preload"
+      href="http://localhost:3000/parse/csr"
+      as="script"
+    />
+    <script
+      type="text/javascript"
+      src="http://localhost:3000/parse/mapkit"
       async=""
     ></script>
     <script
@@ -464,7 +474,8 @@
       async=""
       src="https://fundingchoicesmessages.google.com/f/AGSKWxWETfokXL1HkSqzGt5cy0DTMiJRhwVVONqbS8LBqrmENAZU1kP8doD-eKS4Dh5bVGH9ubvcgPgi1b9INGx57FaWTbUoPNLb1_4KU6DI8zmrrkOrTM85s9OmR6LgL6vOY9NFDX21Ww==?fccs=W1siQUtzUm9sOXl3LVFMVVg5bktOTDg5UjM1Y2xYMlU1Y3l2ZVpUYjNnWW1JVXJGNG1BOHh2dWJsOGsyRTNlYU1CMUdWU2ZDNGE3QkZCOVhzcnBEdG93UVNtUTNwYWZaZHNZdHF2czhWWVZjUlpMTmZERVB0WWx1bUhZLVpndXVMb1BQZEZ4STR4WDhMRFBEZ1VXNkVobTltVTNTOEswWHYtOWRnPT0iXSxudWxsLG51bGwsbnVsbCxudWxsLG51bGwsWzE3NTE5MjE3MDIsOTQyMDAwMDAwXSxudWxsLG51bGwsbnVsbCxbbnVsbCxbNyw2LDEwLDldLG51bGwsMixudWxsLCJlbiIsbnVsbCxudWxsLG51bGwsbnVsbCxudWxsLDFdLCJodHRwczovL3NhdGVsbGl0ZXMucHJvLyIsbnVsbCxbWzI2LCI2Il0sWzgsIlBwRDJZRDFMZHJVIl0sWzksInJ1Il0sWzIzLCIxNzUxNTM5OTE4Il0sWzE5LCIyIl0sWzI0LCIiXSxbMjUsIltbOTUzNTkyNjFdXSJdLFsyOSwiZmFsc2UiXV1d"
     ></script>
-    <script src="https://cdn.apple-mapkit.com/ti/csr/1.x.x/mk-csr.js?mapkitVersion=5.72.53"></script>
+    <!-- <script src="https://cdn.apple-mapkit.com/ti/csr/1.x.x/mk-csr.js?mapkitVersion=5.72.53"></script> -->
+     <script src="http://localhost:3000/parse/csr"></script>
   </head>
   <body class="" style="overflow: hidden">
     <h2 id="fpload" class="fpclose" style="display: none">
