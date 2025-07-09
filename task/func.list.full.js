@@ -7,19 +7,7 @@ const report = [
     percent: 55.4,
     isFullExcluded: false,
     excluded: [
-      "locate",
-      "flyTo", 
-      "flyToBounds",
-      "setMaxBounds",
-      "setMinZoom",
-      "setMaxZoom",
-      "panInsideBounds",
-      "panInside",
-      "stop",
-      "locate",
-      "stopLocate",
-      "_handleGeolocationError",
-      "_handleGeolocationResponse"
+
     ]
   },
   {
@@ -28,10 +16,6 @@ const report = [
     totalBytes: 5834,
     unusedBytes: 5834,
     percent: 100,
-    isFullExcluded: false,
-    excluded: [
-
-    ]
   },
   {
     url: "/src/control/Control.Layers.js",
@@ -363,11 +347,6 @@ const report = [
     unusedBytes: 484,
     percent: 100,
     isFullExcluded: false,
-    excluded: {
-      _createRenderer: [
-        "svg"
-      ]
-    }
   },
   {
     url: "/src/geo/crs/CRS.js",
