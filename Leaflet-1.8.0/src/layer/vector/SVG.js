@@ -1,6 +1,6 @@
 import {Renderer} from './Renderer';
 import * as DomUtil from '../../dom/DomUtil';
-import * as DomEvent from '../../dom/DomEvent';
+// import * as DomEvent from '../../dom/DomEvent';
 import Browser from '../../core/Browser';
 import {stamp} from '../../core/Util';
 import {svgCreate, pointsToPath} from './SVG.Util';
@@ -57,6 +57,7 @@ export var SVG = Renderer.extend({
 		this._container.appendChild(this._rootGroup);
 	},
 
+	/*
 	_destroyContainer: function () {
 		DomUtil.remove(this._container);
 		DomEvent.off(this._container);
@@ -87,7 +88,7 @@ export var SVG = Renderer.extend({
 
 		this.fire('update');
 	},
-
+*/
 	// methods below are called by vector layers implementations
 
 	_initPath: function (layer) {

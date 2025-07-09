@@ -1,9 +1,9 @@
 import {Renderer} from './Renderer';
-import * as DomUtil from '../../dom/DomUtil';
-import * as DomEvent from '../../dom/DomEvent';
+// import * as DomUtil from '../../dom/DomUtil';
+// import * as DomEvent from '../../dom/DomEvent';
 import Browser from '../../core/Browser';
-import * as Util from '../../core/Util';
-import {Bounds} from '../../geometry/Bounds';
+// import * as Util from '../../core/Util';
+// import {Bounds} from '../../geometry/Bounds';
 
 /*
  * @class Canvas
@@ -46,7 +46,7 @@ export var Canvas = Renderer.extend({
 		// How much to extend the click tolerance around a path/object on the map.
 		tolerance: 0
 	},
-
+	/*
 	getEvents: function () {
 		var events = Renderer.prototype.getEvents.call(this);
 		events.viewprereset = this._onViewPreReset;
@@ -483,6 +483,7 @@ export var Canvas = Renderer.extend({
 
 		this._requestRedraw(layer);
 	}
+	*/
 });
 
 // @factory L.canvas(options?: Renderer options)

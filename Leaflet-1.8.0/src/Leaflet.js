@@ -18,7 +18,7 @@ export * from './geometry/index';
 export * from './geo/index';
 
 // layer
-// export * from './layer/index';
+export * from './layer/index';
 
 // map
 export * from './map/index';

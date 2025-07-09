@@ -1,4 +1,4 @@
-export {PosAnimation} from './PosAnimation';
+// export {PosAnimation} from './PosAnimation';
 
 import * as DomEvent from './DomEvent';
 export {DomEvent};

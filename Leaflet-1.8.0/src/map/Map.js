@@ -279,7 +279,7 @@ export var Map = Evented.extend({
 			zoom: zoom
 		};
 	},
-
+	/*
 	// @method fitBounds(bounds: LatLngBounds, options?: fitBounds options): this
 	// Sets a map view that contains the given geographical bounds with the
 	// maximum zoom level possible.
@@ -307,7 +307,7 @@ export var Map = Evented.extend({
 	panTo: function (center, options) { // (LatLng)
 		return this.setView(center, this._zoom, {pan: options});
 	},
-
+	*/
 	// @method panBy(offset: Point, options?: Pan options): this
 	// Pans the map by a given number of pixels (animated).
 	panBy: function (offset, options) {
@@ -597,7 +597,7 @@ export var Map = Evented.extend({
 			newSize: newSize
 		});
 	},
-
+	/*
 	// @section Methods for modifying map state
 	// @method stop(): this
 	// Stops the currently running `panTo` or `flyTo` animation, if any.
@@ -715,7 +715,7 @@ export var Map = Evented.extend({
 		// went successfully.
 		this.fire('locationfound', data);
 	},
-
+	*/
 	// TODO Appropriate docs section?
 	// @section Other Methods
 	// @method addHandler(name: String, HandlerClass: Function): this
