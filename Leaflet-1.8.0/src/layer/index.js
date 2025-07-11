@@ -1,6 +1,6 @@
 export {Layer} from './Layer';
 export {LayerGroup, layerGroup} from './LayerGroup';
-// export {FeatureGroup, featureGroup} from './FeatureGroup';
+export {FeatureGroup, featureGroup} from './FeatureGroup';
 import {GeoJSON, geoJSON, geoJson, /* geometryToLayer, coordsToLatLng, coordsToLatLngs, latLngToCoords, latLngsToCoords, */ getFeature, asFeature} from './GeoJSON';
 // GeoJSON.geometryToLayer = geometryToLayer;
 // GeoJSON.coordsToLatLng = coordsToLatLng;
