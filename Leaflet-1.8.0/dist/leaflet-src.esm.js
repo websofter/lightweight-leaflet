@@ -1,5 +1,5 @@
 /* @preserve
- * Leaflet 1.8.0+main.06ee808, a JS library for interactive maps. https://leafletjs.com
+ * Leaflet 1.8.0+main.d620689, a JS library for interactive maps. https://leafletjs.com
  * (c) 2010-2025 Vladimir Agafonkin, (c) 2010-2011 CloudMade
  */
 
@@ -2877,7 +2877,101 @@ var DomEvent = {
   removeListener: off
 };
 
-// import {PosAnimation} from '../dom/PosAnimation';
+/*
+ * @class PosAnimation
+ * @aka L.PosAnimation
+ * @inherits Evented
+ * Used internally for panning animations, utilizing CSS3 Transitions for modern browsers and a timer fallback for IE6-9.
+ *
+ * @example
+ * ```js
+ * var fx = new L.PosAnimation();
+ * fx.run(el, [300, 500], 0.5);
+ * ```
+ *
+ * @constructor L.PosAnimation()
+ * Creates a `PosAnimation` object.
+ *
+ */
+
+var PosAnimation = Evented.extend({
+
+	// @method run(el: HTMLElement, newPos: Point, duration?: Number, easeLinearity?: Number)
+	// Run an animation of a given element to a new position, optionally setting
+	// duration in seconds (`0.25` by default) and easing linearity factor (3rd
+	// argument of the [cubic bezier curve](https://cubic-bezier.com/#0,0,.5,1),
+	// `0.5` by default).
+	run: function (el, newPos, duration, easeLinearity) {
+		this.stop();
+
+		this._el = el;
+		this._inProgress = true;
+		this._duration = duration || 0.25;
+		this._easeOutPower = 1 / Math.max(easeLinearity || 0.5, 0.2);
+
+		this._startPos = getPosition(el);
+		this._offset = newPos.subtract(this._startPos);
+		this._startTime = +new Date();
+
+		// @event start: Event
+		// Fired when the animation starts
+		this.fire('start');
+
+		this._animate();
+	},
+
+	// @method stop()
+	// Stops the animation (if currently running).
+	stop: function () {
+		if (!this._inProgress) { return; }
+
+		this._step(true);
+		this._complete();
+	},
+
+	_animate: function () {
+		// animation loop
+		this._animId = requestAnimFrame(this._animate, this);
+		this._step();
+	},
+
+	_step: function (round) {
+		var elapsed = (+new Date()) - this._startTime,
+		    duration = this._duration * 1000;
+
+		if (elapsed < duration) {
+			this._runFrame(this._easeOut(elapsed / duration), round);
+		} else {
+			this._runFrame(1);
+			this._complete();
+		}
+	},
+
+	_runFrame: function (progress, round) {
+		var pos = this._startPos.add(this._offset.multiplyBy(progress));
+		if (round) {
+			pos._round();
+		}
+		setPosition(this._el, pos);
+
+		// @event step: Event
+		// Fired continuously during the animation.
+		this.fire('step');
+	},
+
+	_complete: function () {
+		cancelAnimFrame(this._animId);
+
+		this._inProgress = false;
+		// @event end: Event
+		// Fired when the animation ends.
+		this.fire('end');
+	},
+
+	_easeOut: function (t) {
+		return 1 - Math.pow(1 - t, this._easeOutPower);
+	}
+});
 
 /*
  * @class Map
@@ -3148,7 +3242,6 @@ var Map = Evented.extend({
 			zoom: zoom
 		};
 	},
-	/*
 	// @method fitBounds(bounds: LatLngBounds, options?: fitBounds options): this
 	// Sets a map view that contains the given geographical bounds with the
 	// maximum zoom level possible.
@@ -3176,7 +3269,6 @@ var Map = Evented.extend({
 	panTo: function (center, options) { // (LatLng)
 		return this.setView(center, this._zoom, {pan: options});
 	},
-	*/
 	// @method panBy(offset: Point, options?: Pan options): this
 	// Pans the map by a given number of pixels (animated).
 	panBy: function (offset, options) {
@@ -3194,7 +3286,7 @@ var Map = Evented.extend({
 		}
 
 		if (!this._panAnim) {
-			// this._panAnim = new PosAnimation();
+			this._panAnim = new PosAnimation();
 
 			this._panAnim.on({
 				'step': this._onPanTransitionStep,

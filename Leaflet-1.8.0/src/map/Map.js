@@ -279,7 +279,6 @@ export var Map = Evented.extend({
 			zoom: zoom
 		};
 	},
-	/*
 	// @method fitBounds(bounds: LatLngBounds, options?: fitBounds options): this
 	// Sets a map view that contains the given geographical bounds with the
 	// maximum zoom level possible.
@@ -307,7 +306,6 @@ export var Map = Evented.extend({
 	panTo: function (center, options) { // (LatLng)
 		return this.setView(center, this._zoom, {pan: options});
 	},
-	*/
 	// @method panBy(offset: Point, options?: Pan options): this
 	// Pans the map by a given number of pixels (animated).
 	panBy: function (offset, options) {
