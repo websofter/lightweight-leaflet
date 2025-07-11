@@ -1,5 +1,5 @@
 /* @preserve
- * Leaflet 1.8.0+main.1fad3ff, a JS library for interactive maps. https://leafletjs.com
+ * Leaflet 1.8.0+main.6579170, a JS library for interactive maps. https://leafletjs.com
  * (c) 2010-2025 Vladimir Agafonkin, (c) 2010-2011 CloudMade
  */
 
@@ -3564,7 +3564,7 @@
   			newSize: newSize
   		});
   	},
-  	/*
+
   	// @section Methods for modifying map state
   	// @method stop(): this
   	// Stops the currently running `panTo` or `flyTo` animation, if any.
@@ -3587,7 +3587,7 @@
   	// See `Locate options` for more details.
   	locate: function (options) {
 
-  		options = this._locateOptions = Util.extend({
+  		options = this._locateOptions = extend({
   			timeout: 10000,
   			watch: false
   			// setView: false
@@ -3604,8 +3604,8 @@
   			return this;
   		}
 
-  		var onResponse = Util.bind(this._handleGeolocationResponse, this),
-  		    onError = Util.bind(this._handleGeolocationError, this);
+  		var onResponse = bind(this._handleGeolocationResponse, this),
+  		    onError = bind(this._handleGeolocationError, this);
 
   		if (options.watch) {
   			this._locationWatchId =
@@ -3682,7 +3682,7 @@
   		// went successfully.
   		this.fire('locationfound', data);
   	},
-  	*/
+
   	// TODO Appropriate docs section?
   	// @section Other Methods
   	// @method addHandler(name: String, HandlerClass: Function): this

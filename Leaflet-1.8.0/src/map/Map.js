@@ -595,7 +595,7 @@ export var Map = Evented.extend({
 			newSize: newSize
 		});
 	},
-	/*
+
 	// @section Methods for modifying map state
 	// @method stop(): this
 	// Stops the currently running `panTo` or `flyTo` animation, if any.
@@ -713,7 +713,7 @@ export var Map = Evented.extend({
 		// went successfully.
 		this.fire('locationfound', data);
 	},
-	*/
+
 	// TODO Appropriate docs section?
 	// @section Other Methods
 	// @method addHandler(name: String, HandlerClass: Function): this
