@@ -1,5 +1,5 @@
 /* @preserve
- * Leaflet 1.8.0+main.d620689, a JS library for interactive maps. https://leafletjs.com
+ * Leaflet 1.8.0+main.1fad3ff, a JS library for interactive maps. https://leafletjs.com
  * (c) 2010-2025 Vladimir Agafonkin, (c) 2010-2011 CloudMade
  */
 
@@ -6130,6 +6130,12 @@ var FeatureGroup = LayerGroup.extend({
 	}
 });
 
+// @factory L.featureGroup(layers?: Layer[], options?: Object)
+// Create a feature group, optionally given an initial set of layers and an `options` object.
+var featureGroup = function (layers, options) {
+	return new FeatureGroup(layers, options);
+};
+
 /*
  * @class Icon
  * @aka L.Icon
@@ -11557,5 +11563,5 @@ Map.Keyboard = Keyboard;
 Map.ScrollWheelZoom = ScrollWheelZoom;
 Map.TouchZoom = TouchZoom;
 
-export { Bounds, Browser, CRS, Canvas, Class, Control, DivIcon, DomEvent, DomUtil, Draggable, Evented, GeoJSON, GridLayer, Handler, LatLng, LatLngBounds, Layer, LayerGroup, Map, Marker, Mixin, Path, Point, index as Projection, Renderer, TileLayer, Transformation, Util, bind, toBounds as bounds, canvas, control, divIcon, extend, geoJSON, geoJson, gridLayer, toLatLng as latLng, toLatLngBounds as latLngBounds, layerGroup, createMap as map, marker, toPoint as point, setOptions, stamp, tileLayer, toTransformation as transformation, version };
+export { Bounds, Browser, CRS, Canvas, Class, Control, DivIcon, DomEvent, DomUtil, Draggable, Evented, FeatureGroup, GeoJSON, GridLayer, Handler, LatLng, LatLngBounds, Layer, LayerGroup, Map, Marker, Mixin, Path, Point, index as Projection, Renderer, TileLayer, Transformation, Util, bind, toBounds as bounds, canvas, control, divIcon, extend, featureGroup, geoJSON, geoJson, gridLayer, toLatLng as latLng, toLatLngBounds as latLngBounds, layerGroup, createMap as map, marker, toPoint as point, setOptions, stamp, tileLayer, toTransformation as transformation, version };
 //# sourceMappingURL=leaflet-src.esm.js.map

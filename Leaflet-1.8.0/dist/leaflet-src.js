@@ -1,5 +1,5 @@
 /* @preserve
- * Leaflet 1.8.0+main.d620689, a JS library for interactive maps. https://leafletjs.com
+ * Leaflet 1.8.0+main.1fad3ff, a JS library for interactive maps. https://leafletjs.com
  * (c) 2010-2025 Vladimir Agafonkin, (c) 2010-2011 CloudMade
  */
 
@@ -6136,6 +6136,12 @@
   	}
   });
 
+  // @factory L.featureGroup(layers?: Layer[], options?: Object)
+  // Create a feature group, optionally given an initial set of layers and an `options` object.
+  var featureGroup = function (layers, options) {
+  	return new FeatureGroup(layers, options);
+  };
+
   /*
    * @class Icon
    * @aka L.Icon
@@ -11574,6 +11580,7 @@
   exports.DomUtil = DomUtil;
   exports.Draggable = Draggable;
   exports.Evented = Evented;
+  exports.FeatureGroup = FeatureGroup;
   exports.GeoJSON = GeoJSON;
   exports.GridLayer = GridLayer;
   exports.Handler = Handler;
@@ -11597,6 +11604,7 @@
   exports.control = control;
   exports.divIcon = divIcon;
   exports.extend = extend;
+  exports.featureGroup = featureGroup;
   exports.geoJSON = geoJSON;
   exports.geoJson = geoJson;
   exports.gridLayer = gridLayer;
