@@ -1,5 +1,5 @@
 /* @preserve
- * Leaflet 1.8.0+main.6579170, a JS library for interactive maps. https://leafletjs.com
+ * Leaflet 1.8.0+main.0efeb38, a JS library for interactive maps. https://leafletjs.com
  * (c) 2010-2025 Vladimir Agafonkin, (c) 2010-2011 CloudMade
  */
 
@@ -7816,6 +7816,15 @@
   	}
   });
 
+  // @factory L.polyline(latlngs: LatLng[], options?: Polyline options)
+  // Instantiates a polyline object given an array of geographical points and
+  // optionally an options object. You can create a `Polyline` object with
+  // multiple separate lines (`MultiPolyline`) by passing an array of arrays
+  // of geographic points.
+  function polyline(latlngs, options) {
+  	return new Polyline(latlngs, options);
+  }
+
   // Retrocompat. Allow plugins to support Leaflet versions before and after 1.1.
   Polyline._flat = _flat;
 
@@ -11593,6 +11602,7 @@
   exports.Mixin = Mixin;
   exports.Path = Path;
   exports.Point = Point;
+  exports.Polyline = Polyline;
   exports.Projection = index;
   exports.Renderer = Renderer;
   exports.TileLayer = TileLayer;
@@ -11614,6 +11624,7 @@
   exports.map = createMap;
   exports.marker = marker;
   exports.point = toPoint;
+  exports.polyline = polyline;
   exports.setOptions = setOptions;
   exports.stamp = stamp;
   exports.tileLayer = tileLayer;
